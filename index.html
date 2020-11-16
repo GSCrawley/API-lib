@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-  <head>
+  <!-- <head>
     <title>Ms Merriweather</title>
     <style>
       body, html {
@@ -53,14 +53,14 @@
         border-left: none;
       }
     </style>
-  </head>
-  <body>
+  </head> -->
+  <!-- <body>
     <div class="container">
       <h1 id="temp">
-        <!--Temp -->
-      </h1>
+        <!--Temp -
+        </h1>
       <p id="desc">
-        <!-- description -->
+        <!-- description 
       </p>
       <form id="form">
         <input 
@@ -72,7 +72,7 @@
         >
         <button type="submit">Search</button>
       </form>
-    </div>
+    </div> -->
 
     <script>
       // ------------------------------------------------------
@@ -85,26 +85,22 @@
       const zipInput = document.getElementById('zip')
 
       // Define event listeners
-      formEl.addEventListener('submit', (e) => {
-        e.preventDefault()
-        const zip = zipInput.value
-        getWeather(zip)
-      })
+      // formEl.addEventListener('submit', (e) => {
+      //   e.preventDefault()
+      //   const zip = zipInput.value
+      //   getWeather(zip)
+      // })
 
       // Functions 
-      function getWeather(zip) {
-        const apiKey = '467355df4c808dd6134a3b64e9ace282'
-        const units = 'imperial'
-        const path = `https://api.openweathermap.org/data/2.5/weather?zip=${zip}&appid=${apiKey}&units=${units}`
-        fetch(path)
-          .then(res => res.json())
-          .then(json => {
-            temp.innerHTML = json.main.temp
-            desc.innerHTML = json.weather[0].description
-          })
-          .catch(err => console.log(err.message))
-      }
 
+      // function getWeather(callback) {
+      //   callback();
+      // }
+      
+     
+          const zip = '11237'
+          const apiKey = '52136878ccc16d9cb8faf89b266167b4'
+          getWeather(zip,apiKey)
 
     </script>
   </body>
