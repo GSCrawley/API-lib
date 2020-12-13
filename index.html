@@ -1,6 +1,8 @@
 <!DOCTYPE html>
+
 <html>
-  <!-- <head>
+
+  <head>
     <title>Ms Merriweather</title>
     <style>
       body, html {
@@ -53,16 +55,22 @@
         border-left: none;
       }
     </style>
-  </head> -->
-  <!-- <body>
+
+    </head>
+
+    <body>
+
     <div class="container">
       <h1 id="temp">
-        <!--Temp -
+        Temp -
         </h1>
       <p id="desc">
-        <!-- description 
+         description 
       </p>
       <form id="form">
+        <label>
+          Zip Code
+        
         <input 
           id="zip" 
           type="number" 
@@ -70,9 +78,16 @@
           title="Please Enter a valid Zip Code"
           pattern="^\d{5}(?:[-\s]\d{4})?$"
         >
+      </label>
+      <select id="select-unit">
+        <option selected value="imperial">F</option>
+        <option value="metric">C</option>
+      </select>
         <button type="submit">Search</button>
       </form>
-    </div> -->
+    </div>
+
+    <button id="use-location">Use Location</button>
 
     <script>
       // ------------------------------------------------------
@@ -85,23 +100,14 @@
       const zipInput = document.getElementById('zip')
 
       // Define event listeners
-      // formEl.addEventListener('submit', (e) => {
-      //   e.preventDefault()
-      //   const zip = zipInput.value
-      //   getWeather(zip)
-      // })
-
-      // Functions 
-
-      // function getWeather(callback) {
-      //   callback();
-      // }
-      
-     
-          const zip = '11237'
-          const apiKey = '52136878ccc16d9cb8faf89b266167b4'
-          getWeather(zip,apiKey)
+      formEl.addEventListener('submit', (e) => {
+        e.preventDefault()
+        const zip = zipInput.value
+        getWeather(zip)
+      })
 
     </script>
+
   </body>
 </html>
+
