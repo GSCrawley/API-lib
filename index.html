@@ -127,45 +127,62 @@
     <script src="./weather-api.js"></script>
     <script>
       
-      const form = document.getElementById('form')
-      const temp = document.querySelector('temp')
-      const desc = document.querySelector('desc')
-      const clouds = document.querySelector('.clouds')
-      const icon = document.querySelector('.icon')
+      const ZipForm = document.getElementById('ZipForm')
+      const CityForm = document.getElementById('CityForm')
+      const GeoForm = document.getElementById('GeoForm')
+      const zipInput = document.getElementById('zipInput')
+      const cityInput = document.getElementById('cityInput')
+      const latInput = document.getElementById('latInput')
+      const lonInput = document.getElementById('lonInput')
+      
       const locationButton = document.getElementById('use-location')
       const selectUnit = document.getElementById('select-unit')
-      const zipInput = doc                                                                                             ument.getElementById('zip')
+
+      const temp = document.getElementById('temp')wws
+      const desc = document.getElementById('desc')
+      const clouds = document.querySelector('.clouds')
+      const icon = document.querySelector('.icon')
+
+      const apiKey = '4a3c80e31151dcb42d04a6fac45f5f77'
+      const units = 'imperial'
+      const weather = new getWeather(apiKey, units)
 
       // Define event listeners
       form.addEventListener('submit', (e) => {
         e.preventDefault()
         const zip = zipInput.value
-        getWeather(zip)
+
+        weather.getWeatherByZip(zip).then((json) => {
+          temp.innerHTML = json.temp
+          desc.innerHTML = json.description
+        }).catch((err) => {
+          console.log(err.message)
+        })
       })
+      
+      formCity.addEventListener('submit', (e) => {
+        e.preventDefault()
+        const city = cityInput.value
 
-      function handleJson(json) {
-        icon.innerHTML = json.weather[0].icon
-        clouds.innerHTML = json.clouds.all
-        temp.innerHTML = json.main.temp
-        desc.innerHTML = json.weather[0].description
-        console.log(json)
-      }
+        weather.getWeatherByCity(city).then((json) => {
+          temp.innerHTML = json.temp
+          desc.innerHTML = json.desc
+        }).catch((err) => {
+          console.log(err.message)
+        })
+      }) 
 
-      locationButton.onclick = function(e) {
-        if ("geolocation" in navigator) {
-          navigator.geolocation.getCurrentPosition(function handleCoords(position) {
-            console.log(position.coords.latitude, position.coords.longitude);
-          }, function handleError(err) {
-            console.log(err.message)
-          });
-        } else {
-          /* geolocation IS NOT available */
-          console.log('geolocation is not available')
-        }
-      } 
+      formGeo.addEventListener('submit', (e) => {
+        e.preventDefault()
+        const lat = latInput.value
+        const lon = lonInput.value
+        weather.getWeatherByGeo(lat, lon).then((json) => {
+          tempEl.innerHTML = json.temp
+          descEl.innerHTML = json.description
+        }).catch((err) => {
+          console.log(err.message)
+        })
 
-    </script>
-
+    </script>3
   </body>
 </html>
-
