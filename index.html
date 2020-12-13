@@ -182,7 +182,27 @@
         }).catch((err) => {
           console.log(err.message)
         })
+        
+        function handleJson(json) {
+        icon.innerHTML = json.weather[0].icon
+        clouds.innerHTML = json.clouds.all
+        temp.innerHTML = json.main.temp
+        desc.innerHTML = json.weather[0].description
+        console.log(json)
+      }
 
-    </script>3
+      locationButton.onclick = function(e) {
+        if ("geolocation" in navigator) {
+          navigator.geolocation.getCurrentPosition(function handleCoords(position) {
+            console.log(position.coords.latitude, position.coords.longitude);
+          }, function handleError(err) {
+            console.log(err.message)
+          });
+        } else {
+          /* geolocation IS NOT available */
+          console.log('geolocation is not available')
+        }
+      } 
+    </script>
   </body>
 </html>

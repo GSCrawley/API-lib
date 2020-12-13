@@ -9,9 +9,13 @@ class getWeather {
     const path = `https://api.openweathermap.org/data/2.5/weather?zip=${zip}&appid=${apiKey}&units=${units}`
     const res = await fetch(path)
     const json = await res.json()
-
-
+    const { clouds, cod, main, timezone, visibility, weather, wind } = json
+    const { temp, pressure, humidity, temp_max, temp_min } = main
+    const { description, icon } = weather[0]
+    return { temp, pressure, humidity, temp_min, temp_max, clouds, cod, visibility, wind, description, icon }
   }
+
+  
 } 
 
 
