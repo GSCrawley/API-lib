@@ -2,10 +2,7 @@
 
 <html>
 
-  <head>
-
-    <title>Le Météo - The Weather</title>
-    
+  <head>    
 
     <style>
       body, html {
@@ -63,17 +60,19 @@
 
     <body>
 
+      <h2>Le Météo - The Weather</h2>
+
     <div class="container">
-      <h1 id="temp">
+      <h4 id="temp">
         Temp -
-        </h1>
+        </h4>
       <p id="desc">
          description 
       </p>
-      <form id="form">
-        <label>
-          Zip Code
-        
+      <label>
+        Please Enter a Valid ZipCode
+      </label>
+      <form id="ZipForm" class="form">
         <input 
           id="zip" 
           type="number" 
@@ -81,18 +80,41 @@
           title="Please Enter a valid Zip Code"
           pattern="^\d{5}(?:[-\s]\d{4})?$"
         >
-      </label>
-
       <select id="select-unit">
         <option selected value="imperial">F</option>
         <option value="metric">C</option>
       </select>
+    <button type="submit">Search</button>
+</form>
+<br>
+<label>Please Enter a city name</label>
+      <form id="formCity" class="form">
+        <input 
+          id="city" 
+          type="text" 
+          placeholder="City"
+          title="Please Enter a city name"
+        >
+        <button type="submit">Search</button>
+      </form>
+      <br>
+      <label>Please Enter Latitude and Longitude</label>
+      <form id="formGeo" class="form">
+        <input 
+          id="latitude" 
+          type="text" 
+          placeholder="Latitude"
+          title="Please Enter latitude"
+        >
+        <input 
+          id="longitude" 
+          type="text" 
+          placeholder="Longitude"
+          title="Please Enter longitude"
+        >
         <button type="submit">Search</button>
       </form>
     </div>
-
-    <button id="use-location">Use Location</button>
-
     <div class="weather">
       <div class="icon"></div>
       <div class="temp"></div>
@@ -106,13 +128,13 @@
     <script>
       
       const form = document.getElementById('form')
-      const temp = document.getElementById('temp')
-      const desc = document.getElementById('desc')
+      const temp = document.querySelector('temp')
+      const desc = document.querySelector('desc')
       const clouds = document.querySelector('.clouds')
       const icon = document.querySelector('.icon')
       const locationButton = document.getElementById('use-location')
       const selectUnit = document.getElementById('select-unit')
-      const zipInput = document.getElementById('zip')
+      const zipInput = doc                                                                                             ument.getElementById('zip')
 
       // Define event listeners
       form.addEventListener('submit', (e) => {
